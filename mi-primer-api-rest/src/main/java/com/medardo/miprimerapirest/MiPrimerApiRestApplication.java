@@ -12,13 +12,13 @@ public class MiPrimerApiRestApplication {
 		SpringApplication.run(MiPrimerApiRestApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "Name", defaultValue = "Tito") String name){
-		return String.format("Hello %s!", name);
+	@PostMapping("/sumar")
+	public Integer sumar(@RequestBody SumaRequest request) {
+		if (request != null && request.getNumero1() != null && request.getNumero2() != null) {
+			return request.getNumero1() + request.getNumero2();
+		} else {
+			throw new IllegalArgumentException("Los números proporcionados no son válidos.");
+		}
 	}
 
-	@PostMapping("/suma")
-	public String suma(){
-		return ("Ha hecho una peticion post");
-	}
 }
