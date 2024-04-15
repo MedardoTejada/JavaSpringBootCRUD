@@ -1,5 +1,6 @@
 package com.medardo.miprimerapirest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,10 +12,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="producto") //cuando se levante el proyecto crea esta tabla
-public class Producto {
+@Table(name="product") //cuando se levante el proyecto crea esta tabla
+public class Product {
     @ManyToOne
     @JoinColumn(name = "id_fabricante", nullable = false)
+    @JsonIgnore
     private Maker maker;
 
     @Id

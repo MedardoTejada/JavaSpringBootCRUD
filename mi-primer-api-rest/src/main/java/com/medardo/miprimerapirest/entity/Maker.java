@@ -1,4 +1,5 @@
 package com.medardo.miprimerapirest.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -21,5 +22,6 @@ public class Maker {
     private String name;
 
     @OneToMany(mappedBy = "maker", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Producto> productList = new ArrayList<>();
+    @JsonIgnore
+    private List<Product> productList = new ArrayList<>();
 }
